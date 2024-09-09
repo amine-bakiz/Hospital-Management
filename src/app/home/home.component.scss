@@ -1,0 +1,71 @@
+#neubar {
+  background: #fae8d2;
+  box-shadow: 4px 6px 12px rgba(0,0,0,0.4)
+}
+body{
+  box-sizing: border-box;
+}
+.nav-item .active {
+  border-radius: 6px;
+  background: linear-gradient(145deg, #ffe7ca, #f5d7b2);
+  box-shadow:  4px 4px 8px #ddc1a0,
+               -4px -4px 8px #f7e5cc;
+}
+#neubar .dropdown-menu a:hover {
+  color: #454545
+}
+#neubar .nav-item {
+  margin : auto 4px;
+}
+#neubar a {
+
+  padding-left:12px;
+  padding-right:12px;
+}
+#neubar .dropdown-menu {
+  background : #545454
+}
+a.navbar-brand {
+  color: #454545
+}
+.car{
+  width: 80rem;
+}
+.carousel-item{
+  height: 30rem;
+}
+.car .slide .carousel-inner .active img{
+  background-size: cover;
+}
+.carousel {
+  position: relative;
+}
+.carousel-item img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+.grid-container {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: 1fr 1fr auto;
+  padding: 100px;
+  cursor: pointer;
+}
+.grid-item {
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    justify-content: center;
+}
+.text{
+  margin-top: 30px;
+  text-align: center;
+}
+.card-body{
+  text-align: center;
+  background-color: #f5f5f5;
+}
+

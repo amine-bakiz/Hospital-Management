@@ -1,0 +1,133 @@
+<nav class="navbar navbar-expand-sm navbar-light" id="neubar">
+  <div class="container">
+    <a class="navbar-brand">
+      <img src="https://marketplace.canva.com/EAFBb6P4OLs/1/0/1600w/canva-red-blue-simple-logo-hbl5vlZh180.jpg"
+        alt="Logo" height="40" />
+    </a>
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 " routerLink="/doctors">Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/patients">Patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/equipement">Equipement Medical</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/operation">Operations</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" >Equipements Management System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEquipement" type="submit">Add Equipement</button>
+          </div>
+        </div>
+    </nav>
+
+
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+
+            <th scope="col">Nom</th>
+            <th scope="col">Quantite</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equ of equList">
+            <td>{{equ.nom}}</td>
+            <td>{{equ.quantite}}</td>
+            <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editEquipement" (click)="editEquipement(equ)">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteEquipement(equ)">Delete</button>
+            </td>
+
+          </tr>
+          
+        </tbody>
+      </table>
+
+  
+  <!-- Add employee modal -->
+  <div class="modal fade" id="addEquipement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Equipement</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="equDetail">
+                <div class="mb-3">
+                  <label for="nom" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="quantite" class="form-label">Quantite </label>
+                    <input type="text" formControlName="quantite" class="form-control" id="quantite" aria-describedby="emailHelp">
+                </div>
+        
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addEquipement()">Add Equipement</button>
+                  </div>
+              </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Edit employee modal -->
+  <div class="modal fade" id="editEquipement" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Patient details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="equDetail">
+               
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Quantite </label>
+                    <input type="text" formControlName="quantite" class="form-control" id="quantite" aria-describedby="emailHelp">
+                  </div>
+            
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" (click)="updateEquipement()" data-bs-dismiss="modal">Update </button>
+                  </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div> 
+
+

@@ -1,0 +1,149 @@
+<nav class="navbar navbar-expand-sm navbar-light" id="neubar">
+  <div class="container">
+    <a class="navbar-brand">
+      <img src="https://marketplace.canva.com/EAFBb6P4OLs/1/0/1600w/canva-red-blue-simple-logo-hbl5vlZh180.jpg"
+        alt="Logo" height="40" routerLink="/home"/>
+    </a>
+    <div class=" collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ms-auto ">
+        <li class="nav-item">
+          <a class="nav-link mx-2 " routerLink="/doctors">Doctors</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/patients">Patients</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/equipement">Equipement Medical</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link mx-2" routerLink="/operation">Operations</a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Doctors Management System</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addDoctor" type="submit">Add Doctor</button>
+          </div>
+        </div>
+    </nav>
+
+
+
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Matricule</th>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let doctor of docList">
+            <td>{{doctor.matricule}}</td>
+            <td>{{doctor.nom}}</td>
+            <td>{{doctor.prenom}}</td>
+            <td>
+              <img *ngIf="doctor.image" [src]="doctor.image" alt="Doctor Image" height="80" width="80">
+              <span *ngIf="!doctor.image">No Image Available</span>
+          </td>
+            <td>
+                <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#editDoctor" (click)="editDoctor(doctor)">Edit</button>
+                <button type="button" class="btn btn-outline-danger" (click)="deleteDoctor(doctor)">Delete</button>
+            </td>
+
+          </tr>
+          
+        </tbody>
+      </table>
+
+  
+  <!-- Add employee modal -->
+  <div class="modal fade" id="addDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add new Doctor</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          
+            <form [formGroup]="docDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Matricule </label>
+                    <input type="text" formControlName="matricule" class="form-control" id="matricule" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Prenom </label>
+                    <input type="text" formControlName="prenom" class="form-control" id="prenom" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Image URL</label>
+                    <input type="text" formControlName="image" class="form-control" id="image" aria-describedby="emailHelp">
+                </div>  
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="addDoctor()">Add Doctor</button>
+                  </div>
+              </form>
+
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  
+  <!-- Edit employee modal -->
+  <div class="modal fade" id="editDoctor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Edit Doctor details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="docDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Matricule</label>
+                    <input type="text" formControlName="matricule" class="form-control" id="matricule" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                  <label for="exampleInputEmail1" class="form-label">Nom </label>
+                  <input type="text" formControlName="nom" class="form-control" id="nom" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Prenom </label>
+                    <input type="text" formControlName="prenom" class="form-control" id="prenom" aria-describedby="emailHelp">
+                  </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Image URL</label>
+                    <input type="text" formControlName="image" class="form-control" id="image" aria-describedby="emailHelp">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-success" (click)="updateDoctor()" data-bs-dismiss="modal">Update </button>
+                  </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div> 
